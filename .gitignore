@@ -1,0 +1,14 @@
+.gemini/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+.ipynb/
+venv/
+.venv/
+.env
+.vscode/
+.idea/
+Mutual Funds Analytics Datasets/
+
