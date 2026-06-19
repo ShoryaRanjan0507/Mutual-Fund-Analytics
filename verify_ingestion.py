@@ -1,8 +1,19 @@
+"""
+Mutual Fund Analytics - Star Schema Referential Integrity & Analytical Query Verification
+
+This module performs validations across row counts and database foreign key checks,
+then executes the 10 analytical SQL queries from queries.sql.
+"""
+
 import os
 import sqlite3
 import pandas as pd
 
 def verify_all():
+    """
+    Validates database schema constraints, matches table sizes,
+    and runs the analytical queries to ensure execution accuracy.
+    """
     db_path = "bluestock_mf.db"
     processed_dir = os.path.join("data", "processed")
     queries_file = "queries.sql"
@@ -24,7 +35,7 @@ def verify_all():
     print("\n[VERIFY] Checking Foreign Key Constraints...")
     fk_check = pd.read_sql_query("PRAGMA foreign_key_check", conn)
     if fk_check.empty:
-        print("  -> SUCCESS: All foreign key constraints are 100% intact (0 issues found).")
+        print("  -> SUCCESS: All foreign key constraints are 100% intact (0 violations).")
     else:
         print("  -> WARNING: Found foreign key violations!")
         print(fk_check)
@@ -70,17 +81,17 @@ def verify_all():
     print("\n[VERIFY] Executing 10 Analytical Queries...")
     if not os.path.exists(queries_file):
         print(f"[ERROR] Queries file '{queries_file}' not found!")
+        conn.close()
         return False
         
     with open(queries_file, "r") as f:
         queries_content = f.read()
         
-    # Split queries by semicolon (ignoring comments)
+    # Split queries by semicolon
     queries = [q.strip() for q in queries_content.split(";") if q.strip()]
     
     query_idx = 1
     for query in queries:
-        # Get query label from comment if exists
         lines = query.split("\n")
         label = f"Query {query_idx}"
         for line in lines:
@@ -92,11 +103,11 @@ def verify_all():
         print("-" * 50)
         try:
             df_res = pd.read_sql_query(query, conn)
-            print(df_res.head(5))
+            # print snippet of first 2 rows for checking
+            print(df_res.head(2))
             print(f"Total rows returned: {len(df_res)}")
         except Exception as e:
             print(f"[ERROR] Failed to run query: {e}")
-            print(f"Query text:\n{query}")
             
         query_idx += 1
         
@@ -104,6 +115,7 @@ def verify_all():
     print("\n" + "=" * 80)
     print("VERIFICATION COMPLETE")
     print("=" * 80)
+    return True
 
 if __name__ == "__main__":
     verify_all()
