@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluestock Insight 360 — Mutual Fund Analytics Dashboard</title>
+    <meta name="description" content="Comprehensive mutual fund analytics dashboard with industry overview, fund performance, investor analytics, and SIP & market trends.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Bluestock</span>
+                    <span class="logo-subtitle">Insight 360</span>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="overview" id="nav-overview">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Industry Overview</span>
+            </a>
+            <a href="#" class="nav-item" data-page="performance" id="nav-performance">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Fund Performance</span>
+            </a>
+            <a href="#" class="nav-item" data-page="investors" id="nav-investors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Investor Analytics</span>
+            </a>
+            <a href="#" class="nav-item" data-page="sip" id="nav-sip">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                <span>SIP & Market Trends</span>
+            </a>
+            <a href="#" class="nav-item" data-page="risk" id="nav-risk">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Risk Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <span class="toggle-label">Dark Mode</span>
+            </button>
+            <div class="sidebar-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                <span>Data as of May 2026</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header" id="mobile-header">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="mobile-logo">
+            <div class="logo-icon small">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <span>Bluestock Insight 360</span>
+        </div>
+        <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle dark mode">
+            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+    </header>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+
+        <!-- PAGE 1: Industry Overview -->
+        <section class="page active" id="page-overview">
+            <div class="page-header">
+                <h1 class="page-title">Industry Overview</h1>
+                <p class="page-desc">Macro-level view of the Indian Mutual Fund industry</p>
+            </div>
+            <div class="kpi-grid" id="kpi-overview"></div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Industry AUM Trend (2022–2025)</h3>
+                        <span class="card-badge">Quarterly</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-aum-trend"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>AUM by AMC</h3>
+                        <span class="card-badge">Latest</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-aum-house"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Folio Count Growth</h3>
+                        <span class="card-badge">Quarterly</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-folio-trend"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Category-wise Net Inflows</h3>
+                        <span class="card-badge">Cumulative</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-category-inflows"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Fund Performance -->
+        <section class="page" id="page-performance">
+            <div class="page-header">
+                <h1 class="page-title">Fund Performance</h1>
+                <p class="page-desc">Scheme-level returns, risk metrics & scorecard rankings</p>
+            </div>
+            <div class="filters-bar" id="filters-performance">
+                <div class="filter-group">
+                    <label>Fund House</label>
+                    <select id="filter-fund-house"><option value="All">All</option></select>
+                </div>
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select id="filter-category"><option value="All">All Category</option></select>
+                </div>
+                <div class="filter-group">
+                    <label>Plan</label>
+                    <select id="filter-plan"><option value="All">All</option></select>
+                </div>
+                <div class="filter-group">
+                    <label>Risk Grade</label>
+                    <select id="filter-risk"><option value="All">All</option></select>
+                </div>
+            </div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>3-Yr Return vs Risk (StdDev)</h3>
+                        <span class="card-badge">Bubble = AUM</span>
+                    </div>
+                    <div class="card-body chart-container chart-container-lg"><canvas id="chart-risk-return"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Fund Scorecard</h3>
+                        <span class="card-badge">Top 40</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-wrapper" id="scorecard-table-wrapper">
+                            <table class="data-table" id="scorecard-table">
+                                <thead><tr><th>#</th><th>Fund Name</th><th>Category</th><th>Return</th><th>Expense</th><th>Sharpe</th><th>Score</th></tr></thead>
+                                <tbody id="scorecard-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-grid-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>NAV Trend vs Nifty 50 Benchmark</h3>
+                        <span class="card-badge">Top 5 Funds</span>
+                    </div>
+                    <div class="card-body chart-container chart-container-lg"><canvas id="chart-nav-trend"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: Investor Analytics -->
+        <section class="page" id="page-investors">
+            <div class="page-header">
+                <h1 class="page-title">Investor Analytics</h1>
+                <p class="page-desc">Demographic and behavioral insights from transaction data</p>
+            </div>
+            <div class="kpi-grid" id="kpi-investors"></div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header"><h3>Transaction Amount by State (₹ Cr)</h3></div>
+                    <div class="card-body chart-container chart-container-lg"><canvas id="chart-state-txn"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3>Transaction Type Split</h3></div>
+                    <div class="card-body chart-container chart-container-lg"><canvas id="chart-txn-split"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header"><h3>Age Group vs Avg SIP Amount (₹)</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-age-sip"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3>Monthly Transaction Volume (Count)</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-monthly-vol"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-3">
+                <div class="card">
+                    <div class="card-header"><h3>Gender Distribution</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-gender"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3>City Tier Split</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-city-tier"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3>Payment Mode</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-payment"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: SIP & Market Trends -->
+        <section class="page" id="page-sip">
+            <div class="page-header">
+                <h1 class="page-title">SIP & Market Trends</h1>
+                <p class="page-desc">Monthly SIP inflows, account growth, and market correlation</p>
+            </div>
+            <div class="kpi-grid" id="kpi-sip"></div>
+            <div class="chart-grid-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Monthly SIP Inflow vs Nifty 50 Trend (2022–2025)</h3>
+                        <span class="card-badge">Dual Axis</span>
+                    </div>
+                    <div class="card-body chart-container chart-container-xl"><canvas id="chart-sip-nifty"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>SIP Account Growth</h3>
+                        <span class="card-badge">Active Accounts (Cr)</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-sip-accounts"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Top 5 Categories by Net Inflow</h3>
+                        <span class="card-badge">Cumulative</span>
+                    </div>
+                    <div class="card-body chart-container"><canvas id="chart-top-categories"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: Risk Analytics -->
+        <section class="page" id="page-risk">
+            <div class="page-header">
+                <h1 class="page-title">Risk Analytics</h1>
+                <p class="page-desc">Value at Risk, Conditional VaR, and risk-return profiling</p>
+            </div>
+            <div class="chart-grid-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Historical VaR (95%) — All Schemes</h3>
+                        <span class="card-badge">5th Percentile Daily Return</span>
+                    </div>
+                    <div class="card-body chart-container chart-container-xl"><canvas id="chart-var"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Conditional VaR (CVaR 95%) — All Schemes</h3>
+                        <span class="card-badge">Expected Shortfall</span>
+                    </div>
+                    <div class="card-body chart-container chart-container-xl"><canvas id="chart-cvar"></canvas></div>
+                </div>
+            </div>
+            <div class="chart-grid-1">
+                <div class="card">
+                    <div class="card-header"><h3>Risk Grade Distribution</h3></div>
+                    <div class="card-body chart-container"><canvas id="chart-risk-grade"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -91,6 +91,25 @@ Recommends the top 3 schemes matching a user's risk profile based on historical 
   - `-r` or `--risk`: `Low`, `Moderate`, or `High` (case-insensitive).
   - *Fallback*: If executed without arguments, it prompts for interactive keyboard input.
 
+### 4.2 Interactive Web Dashboard
+A highly polished, responsive 5-page dashboard built with HTML, custom styling, and Chart.js to display Bluestock Insight 360.
+- **Default Theme**: Light theme matching the Bluestock brand aesthetics.
+- **Features**: Includes a "Dark Mode" toggle in the sidebar, micro-animations, responsive layout, and interactive Chart.js visualizations.
+- **Pages**:
+  1. **Industry Overview**: AUM folio counts, Category inflows, SIP trend, and benchmark index growth.
+  2. **Fund Performance**: Expense ratios vs performance, risk-return scatter plots, benchmark beaters, and fund ranking tables.
+  3. **Investor Analytics**: Cohort stats, age/gender distributions, transaction payment modes, and state-wise investing.
+  4. **SIP & Market Trends**: YoY growth, monthly SIP inflows, and AUM house rankings.
+  5. **Risk Analytics**: 95% Historical VaR and CVaR, Herfindahl-Hirschman (HHI) sector concentration index, and rolling 90-day Sharpe timeline.
+
+- **How to Run**:
+  Start a local server in the `dashboard` directory:
+  ```bash
+  python -m http.server 8080
+  ```
+  Then open your browser and navigate to:
+  `http://localhost:8080`
+
 ---
 
 ## 5. Dataset Dictionary
