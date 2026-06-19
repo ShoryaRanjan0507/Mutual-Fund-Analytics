@@ -1,5 +1,5 @@
 """
-Mutual Fund Analytics - Star Schema Referential Integrity & Analytical Query Verification
+Bluestock Insight 360 - Star Schema Referential Integrity & Analytical Query Verification
 
 This module performs validations across row counts and database foreign key checks,
 then executes the 10 analytical SQL queries from queries.sql.

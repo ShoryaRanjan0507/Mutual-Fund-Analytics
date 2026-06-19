@@ -24,7 +24,7 @@ def create_and_execute_notebook():
     cells = []
     
     # Cell 1: Markdown Title
-    cells.append(nbf.v4.new_markdown_cell("""# Mutual Fund Analytics - Exploratory Data Analysis (EDA)
+    cells.append(nbf.v4.new_markdown_cell("""# Bluestock Insight 360 - Exploratory Data Analysis (EDA)
 
 This notebook contains a comprehensive Exploratory Data Analysis of the mutual fund datasets loaded in `bluestock_mf.db`. It generates 16 high-quality visualizations covering NAV trends, AUM growth, SIP inflows, investor demographics, and portfolio allocations, and documents key analytical findings.
 

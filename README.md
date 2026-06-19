@@ -1,4 +1,4 @@
-# Bluestock Mutual Fund Analytics: Data Warehouse & Quantitative Risk Capstone
+# Bluestock Insight 360: Data Warehouse & Quantitative Risk Platform
 
 Welcome to the **Bluestock Mutual Fund Analytics** repository. This project modernization establishes a unified data warehouse and quant platform for Bluestock's retail mutual fund offerings, centering on an end-to-end star schema ETL, quantitative risk modeling, investor cohort tracking, and portfolio concentration analysis.
 

@@ -25,7 +25,7 @@ def create_advanced_analytics_notebook():
     cells = []
     
     # CELL 1: Markdown Title
-    cells.append(nbf.v4.new_markdown_cell("""# Advanced Mutual Fund Analytics: Risk, Performance & Cohorts
+    cells.append(nbf.v4.new_markdown_cell("""# Bluestock Insight 360: Advanced Risk, Performance & Cohorts
 
 This Jupyter Notebook performs quantitative, cohort, and portfolio-level calculations using the star schema database `bluestock_mf.db`.
 

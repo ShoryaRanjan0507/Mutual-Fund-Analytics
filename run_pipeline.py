@@ -1,5 +1,5 @@
 """
-Mutual Fund Analytics - Master ETL and Execution Pipeline
+Bluestock Insight 360 - Master ETL and Execution Pipeline
 
 This script serves as the centralized orchestrator for the entire Capstone project.
 It runs data ingestion, cleaning, database loading, schema verification, 
@@ -40,7 +40,7 @@ def run_pipeline():
     ]
     
     print("=" * 80)
-    print("                 BLUESTOCK MUTUAL FUND ANALYTICS PIPELINE")
+    print("                 BLUESTOCK INSIGHT 360 PIPELINE")
     print("=" * 80)
     
     execution_reports = []

@@ -206,7 +206,7 @@ def create_and_run_analytics():
     nb = nbf.v4.new_notebook()
     cells = []
     
-    cells.append(nbf.v4.new_markdown_cell("""# Mutual Fund Analytics - Performance & Risk Analytics
+    cells.append(nbf.v4.new_markdown_cell("""# Bluestock Insight 360 - Performance & Risk Analytics
 
 This notebook contains mathematical formulations, CAGR computations, Sharpe & Sortino ratios, OLS regressions for Alpha/Beta, Maximum Drawdown calculations, and a composite Fund Scorecard ranking.
 
