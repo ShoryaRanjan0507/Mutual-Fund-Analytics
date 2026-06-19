@@ -12,3 +12,14 @@ venv/
 .idea/
 Mutual Funds Analytics Datasets/
 
+# Bluestock Capstone database and generated outputs
+*.db
+data/processed/
+reports/figures/
+reports/data_quality_report.md
+alpha_beta.csv
+fund_scorecard.csv
+var_cvar_report.csv
+rolling_sharpe_chart.png
+benchmark_comparison.png
+

@@ -18,6 +18,7 @@ try:
     from generate_eda import create_and_execute_notebook as run_eda
     from generate_analytics import create_and_run_analytics as run_performance
     from build_advanced_analytics import create_advanced_analytics_notebook as run_advanced
+    from export_dashboard_data import export_data
     from build_pdf import build_pdf
 except ImportError as e:
     print(f"Error importing pipeline steps: {e}")
@@ -36,6 +37,7 @@ def run_pipeline():
         ("Exploratory Data Analysis Notebook (16 Charts)", run_eda),
         ("Performance Scorecard Notebook & CSVs", run_performance),
         ("Advanced Analytics Notebook, VaR & Sharpe Plot", run_advanced),
+        ("Web Dashboard Data Export", export_data),
         ("Dashboard PDF Build Consolidation", build_pdf)
     ]
     
